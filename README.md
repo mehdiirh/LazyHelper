@@ -21,13 +21,13 @@ pip install -r requirements.txt
 source venv/bin/activate
 ```
 
-#### Then, generate a SECRET_KEY for your project by:
+Then, generate a SECRET_KEY for your project by:
 
 ```shell
 python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
 
-#### You'll see something like `640ivxu...2k7w6%%` as output. copy it and replace `LazyHelper/settings.py` (line 24) with it:
+You'll see something like `640ivxu...2k7w6%%` as output. copy it and replace `LazyHelper/settings.py` (line 24) with it:
 
 ```python
 # settings.py
@@ -50,25 +50,24 @@ python -c 'from django.core.management.utils import get_random_secret_key; print
 ```shell
 ./manage.py runserver 0.0.0.0:8081
 ```
-#### Connect your phone and PC to same network and access it from your PC local ip address (192.168.\*.\*)
+ Connect your phone and PC to same network and access it from your PC local ip address (192.168.* . *)
 
 ## - [Optional] Set host name 
 ```shell
 sudo nano /etc/hosts
 ```
 
-#### Add this line after `127.0.0.1    localhost`:
+Add this line after `127.0.0.1    localhost`:
 ```shell
 127.0.0.1    <your-host-name>  # like: mehdi
 ```
-##### 
 
-#### Execute this command:
+Execute this command:
 ```shell
 hostnamectl set-hostname <your-host-name>
 ```
 
-#### Reboot!
+Reboot!
 
 
 # - Daemonize 
@@ -76,7 +75,7 @@ hostnamectl set-hostname <your-host-name>
 sudo nano /etc/systemd/system/LazyHelper.service
 ```
 
-#### **Edit** this service based on your configs, then hit Ctrl+X and Enter to save
+ **Edit** this service based on your configs, then hit Ctrl+X and Enter to save
 ```shell
 [Unit]
 Description=LazyHelper
@@ -92,7 +91,7 @@ WantedBy=multi-user.target
 
 ```
 
-#### Execute:
+ Execute:
 ```shell
 sudo systemctl enable LazyHelper
 sudo systemctl start LazyHelper
