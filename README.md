@@ -102,4 +102,8 @@ sudo systemctl start LazyHelper
 ---
 
 ### Your Pull Requests are so welcome !
+Currently, I have no idea how to make this work on Windows. If you know, please submit a PR.
+
+Also, any UI/UX improvements are welcome
+
 ### - [Telegram](https://t.me/PythonUnion)
