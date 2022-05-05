@@ -69,6 +69,7 @@ hostnamectl set-hostname <your-host-name>
 
 Reboot!
 
+Now you can access your PC from <your-host-name>.local ( like: mehdi.local) from any device on your network
 
 # - Daemonize 
 ```shell
