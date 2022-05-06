@@ -17,8 +17,8 @@
 git clone https://github.com/mehdiirh/LazyHelper.git
 cd LazyHelper
 python -m venv venv
-pip install -r requirements.txt 
 source venv/bin/activate
+pip install -r requirements.txt 
 ```
 
 Then, generate a SECRET_KEY for your project by:
