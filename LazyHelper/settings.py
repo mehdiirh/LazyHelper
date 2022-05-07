@@ -39,7 +39,11 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
 
     'control.apps.ControlConfig',
+    'api.apps.ApiConfig',
+    'user.apps.UserConfig',
+    'config.apps.ConfigConfig',
 
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -82,12 +86,12 @@ WSGI_APPLICATION = 'LazyHelper.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

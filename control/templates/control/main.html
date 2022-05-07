@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-lg-4 col-md-1 col-sm-12"></div>
         <div class="col-lg-4 col-md-10 col-sm-12 mt-5">
-            <h1 class="text-center mb-3">Hey 🦥</h1>
+            <h1 class="text-center mb-3">Hello{% if user.username %}, {{ user.username }} {% endif %} 🦥</h1>
             <form method="post" action="/">
                 {% csrf_token %}
 
@@ -62,7 +62,20 @@
                     <textarea class="form-control bg-secondary text-white" id="output" rows="10" disabled>{{ response }}</textarea>
                 </div>
             {% endif %}
-        </h1>
+
+            <div class="row ">
+
+                {% if user.is_authenticated %}
+                    <a class="col-4 text-decoration-none text-center form-text" href="{% url 'logout' %}">Logout</a>
+                    <a class="col-4 text-decoration-none text-center form-text" href="{% url 'admin:index' %}">Panel</a>
+                        <a class="col-4 text-decoration-none text-center form-text" href="{% url 'admin:config_config_changelist' %}">Settings</a>
+                {% else %}
+                    <div class="row">
+                        <a class="col-12 text-decoration-none text-center form-text" href="{% url 'admin:login' %}?next={% url 'control' %}">Login</a>
+                    </div>
+                {% endif %}
+
+            </div>
 
         <div class="col-lg-4 col-md-1 col-sm-12"></div>
     </div>

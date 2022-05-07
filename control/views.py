@@ -1,14 +1,45 @@
-from django.shortcuts import render
-import os
+from django.shortcuts import render, reverse, redirect
+from django.contrib.auth import logout as logout_user
+
+from utils.auth.http.decorators import login_required
+
+import json
+import requests
 
 
+@login_required(redirect_login=True, next_redirect='control')
 def control(request):
 
-    context = {'response': ''}
+    api_key = None
+    if request.user.is_staff:
+        api_key = request.user.profile.api_key
+
+    context = {'response': '', 'user': request.user}
 
     if request.method == 'POST':
         command = request.POST.get('command')
-        output = os.popen(command).read()
+
+        # build absolute uri for "command execution" API endpoint and
+        # send command to it
+        execute_command_endpoint = request.build_absolute_uri(reverse('exec-command'))
+        response = requests.post(
+            execute_command_endpoint,
+            headers={'authorization': api_key},  # send user api_key ( if authenticated )
+            data={'command': str(command)}
+        )
+
+        try:
+            response = response.json()
+            _data = response['data']
+            output = _data.get('output')
+        except json.JSONDecodeError:
+            output = f'ERROR:\n{str(response.status_code)} {str(response.reason)}'
+
         context['response'] = output
 
     return render(request, 'control/main.html', context=context)
+
+
+def logout(request):
+    logout_user(request)
+    return redirect('control')
