@@ -1,0 +1,10 @@
+[
+  {
+    "model": "config.config",
+    "pk": 1,
+    "fields": {
+      "key": "login-required",
+      "active": true
+    }
+  }
+]
