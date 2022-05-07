@@ -7,7 +7,10 @@ if you have smart home or a central application and need to control your PC from
 ## Execute commands
 
 ---
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 ```shell
 POST /api/execute/
 ```
