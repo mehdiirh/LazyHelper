@@ -9,7 +9,7 @@ from utils.core.tools import execute_command
 from utils.auth.http.decorators import login_required
 
 
-@require_POST  # TODO: CHANGE TO POST
+@require_POST
 @csrf_exempt
 @login_required()
 def exec_command(request):
