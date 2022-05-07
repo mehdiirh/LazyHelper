@@ -24,7 +24,6 @@ def login_required(redirect_login=False, next_redirect=None):
                 except:
                     next_redirect_url = next_redirect
 
-                print(next_redirect)
                 return redirect_to_login(next_redirect_url, login_url='admin:login')
 
             return func(request, *args, **kwargs)
