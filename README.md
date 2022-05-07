@@ -16,41 +16,26 @@
 ```shell
 git clone https://github.com/mehdiirh/LazyHelper.git
 cd LazyHelper
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt 
 ```
 
-Then, generate a SECRET_KEY for your project by:
+LazyHelper🦥 likes lazy people, so because you're too lazy to install step by step, it will install itself :)
+
+Run:
 
 ```shell
-python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+chmod +x install.sh
+sudo ./install.sh
 ```
 
-You'll see something like `640ivxu...2k7w6%%` as output. copy it and replace `LazyHelper/settings.py` (line 24) with it:
-
-```python
-# settings.py
-
-...
-
-22:
-23: # SECURITY WARNING: keep the secret key used in production secret!
-> 24: SECRET_KEY = 'DJANGO_INSECURE(`-._!$(#)$!===*YOUR_SECRET_KEY*===!$(#)$!*_.-`)'
-    # ^^^^ PASTE IT HERE
-25:
-26: # SECURITY WARNING: don't run with debug turned on in production!
-27: DEBUG = True
-28:
-
-...
-```
+Yay ! 
 
 ### Now you can run your LazyHelper:
 ```shell
-./manage.py runserver 0.0.0.0:8081
+./manage.py runserver 0.0.0.0:8081  # <- you can change the port 
 ```
- Connect your phone and PC to same network and access it from your PC local ip address (192.168.* . *)
+ Connect your phone and PC to same network and access it from your PC local ip address :
+
+`192.168.*.*:<port>`
 
 ## - [Optional] Set host name 
 ```shell
