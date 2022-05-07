@@ -87,6 +87,15 @@ sudo systemctl start LazyHelper
 
 Done !
 
+### - Disable authentication ( NOT RECOMMENDED❗️ ) 
+To use LazyHelper you have to log in by default, if you want to disable this behavior, go to "settings" section, disable "login-required" and save
+
+> #### ❗️SECURITY WARNING
+> By disabling authentication, anyone on your network can access your PC.  
+> They can execute everything. even delete your whole OS !!
+>
+> BE CAREFUL !
+
 ## - API
 
 LazyHelper API is described [Here](docs/api.md)
