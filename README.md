@@ -20,6 +20,8 @@ cd LazyHelper
 
 LazyHelper🦥 likes lazy people, so because you're too lazy to install step by step, it will install itself :)
 
+You will be asked to create a superuser, please do it to use authentication system. 
+
 Run:
 
 ```shell
@@ -69,7 +71,7 @@ After=network.target
 
 [Service]
 WorkingDirectory=  # Like: /home/mehdi/python/projects/LazyHelper
-ExecStart= # Like: /home/mehdi/python/projects/LazyHelper/venv/bin/python manage.py runserver 0.0.0.0:81
+ExecStart= # Like: /home/mehdi/python/projects/LazyHelper/venv/bin/python manage.py runserver 0.0.0.0:8081
 Restart=always
 
 [Install]
