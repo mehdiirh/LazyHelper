@@ -1,12 +1,10 @@
-LazyHelper API
----
+#LazyHelper API
+
 LazyHelper provides REST API. 
 
 if you have smart home or a central application and need to control your PC from there, you can use these endpoints
 
 ## Execute commands
-
----
 
 ```shell
 POST /api/execute/

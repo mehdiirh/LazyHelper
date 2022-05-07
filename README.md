@@ -11,7 +11,7 @@
 
 #### Just install and run LazyHelper and after that you're able to shut down your linux PC with your mobile !
 
-# - Installation
+## - Installation
 
 ```shell
 git clone https://github.com/mehdiirh/LazyHelper.git
@@ -58,7 +58,7 @@ Reboot!
 
 Now you can access your PC from your-host-name.local ( like: mehdi.local) from any device on your network
 
-# - Daemonize 
+## - Daemonize 
 ```shell
 sudo nano /etc/systemd/system/LazyHelper.service
 ```
@@ -87,7 +87,7 @@ sudo systemctl start LazyHelper
 
 Done !
 
-# - API
+## - API
 
 LazyHelper API is described [Here](docs/api.md)
 
