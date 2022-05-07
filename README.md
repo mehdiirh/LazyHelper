@@ -85,7 +85,11 @@ sudo systemctl enable LazyHelper
 sudo systemctl start LazyHelper
 ```
 
-### Done !
+#### Done !
+
+# - API
+
+LazyHelper API is described [Here](docs/api.md)
 
 ---
 
