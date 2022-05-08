@@ -11,11 +11,14 @@
 
 #### Just install and run LazyHelper and after that you're able to shut down your linux PC with your mobile !
 
+## - API
+
+LazyHelper API is described [Here](docs/api.md)
+
 ## - Installation
 
 ```shell
-git clone https://github.com/mehdiirh/LazyHelper.git
-cd LazyHelper
+git clone https://github.com/mehdiirh/LazyHelper.git && cd LazyHelper
 ```
 
 LazyHelper🦥 likes lazy people, so because you're too lazy to install step by step, it will install itself :)
@@ -25,8 +28,7 @@ You will be asked to create a superuser, please do it to use authentication syst
 Run:
 
 ```shell
-chmod +x install.sh
-sudo ./install.sh
+sudo bash install.sh && source venv/bin/activate
 ```
 
 Yay ! 
@@ -87,18 +89,14 @@ sudo systemctl start LazyHelper
 
 Done !
 
-### - Disable authentication ( NOT RECOMMENDED❗️ ) 
+### - Disable authentication ( NOT RECOMMENDED ) 
 To use LazyHelper you have to log in by default, if you want to disable this behavior, go to "settings" section, disable "login-required" and save
 
 > #### ❗️SECURITY WARNING
 > By disabling authentication, anyone on your network can access your PC.  
 > They can execute everything. even delete your whole OS !!
->
-> BE CAREFUL !
-
-## - API
-
-LazyHelper API is described [Here](docs/api.md)
+> 
+> If you're on a public network, never disable authentication
 
 ---
 
