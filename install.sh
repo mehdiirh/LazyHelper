@@ -10,8 +10,8 @@ echo Done
 echo
 
 echo - Installing packages...
-pip install -U pip -q
-pip install -r requirements.txt -q
+pip install -U pip
+pip install -r requirements.txt
 echo Done
 echo
 
@@ -23,6 +23,13 @@ echo
 
 echo - Exiting install directory
 cd ..
+echo
+
+echo - Creating migrations and loading static files...
+./manage.py makemigrations
+./manage.py migrate
+./manage.py collectstatic --noinput
+echo Done
 echo
 
 echo - Loading fixtures...
