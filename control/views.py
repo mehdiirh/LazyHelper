@@ -31,7 +31,7 @@ def control(request):
         try:
             response = response.json()
             _data = response['data']
-            output = _data.get('output')
+            output = _data.get('output') or {}
         except json.JSONDecodeError:
             output = f'ERROR:\n{str(response.status_code)} {str(response.reason)}'
 
