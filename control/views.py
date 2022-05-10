@@ -1,6 +1,8 @@
 from django.shortcuts import render, reverse, redirect
 from django.contrib.auth import logout as logout_user
 
+from config.models import Button
+
 from utils.auth.http.decorators import login_required
 
 import json
@@ -10,11 +12,16 @@ import requests
 @login_required(redirect_login=True, next_redirect='control')
 def control(request):
 
+    custom_buttons = Button.objects.filter(active=True, command__active=True).all()
+    context = {
+        'response': '',
+        'custom_buttons': custom_buttons,
+        'user': request.user,
+    }
+
     api_key = None
     if request.user.is_staff:
         api_key = request.user.profile.api_key
-
-    context = {'response': '', 'user': request.user}
 
     if request.method == 'POST':
         command = request.POST.get('command')

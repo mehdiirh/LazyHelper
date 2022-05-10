@@ -1,0 +1,27 @@
+ <!-- Sidebar Holder -->
+ <nav id="sidebar" class="active">
+    <div class="sidebar-header">
+       <h4>Custom Commands</h4>
+    </div>
+
+    {% if custom_buttons %}
+
+        <form method="post" action="/">
+            {% csrf_token %}
+
+            <ul class="list-unstyled components h-auto">
+                {% for btn in custom_buttons %}
+                    <li>
+                        <button name="command" class="btn btn-sm p-3 w-100 mb-1" type="submit" value="{{ btn.command.command }}"
+                                style="background-color: {{ btn.color }}">{{ btn.command.title }}</button>
+                    </li>
+                {% endfor %}
+            </ul>
+        </form>
+    {% endif %}
+
+    <ul class="list-unstyled CTAs">
+       <li><a href="{% url 'admin:config_button_add' %}" target="_blank" class="link">+ Add </a></li>
+       <li><a href="https://github.com/mehdiirh/LazyHelper" target="_blank" class="article">Source</a></li>
+    </ul>
+ </nav>
