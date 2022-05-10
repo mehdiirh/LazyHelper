@@ -12,8 +12,9 @@ class Config(models.Model):
 class Command(models.Model):
 
     title = models.CharField(max_length=128, null=False, blank=False)
-    command = models.CharField(max_length=1024, default='sudo ', null=False, blank=False)
-    short_code = models.SlugField(null=False, blank=False, help_text='specify a short code for this command')
+    command = models.CharField(max_length=1024, default='sudo ', unique=True, null=False, blank=False)
+    short_code = models.SlugField(null=False, blank=False, unique=True,
+                                  help_text='specify a short code for this command')
     description = models.TextField(null=True, blank=True)
     active = models.BooleanField(default=True)
 
