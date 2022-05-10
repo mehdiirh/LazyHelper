@@ -5,19 +5,14 @@
     </div>
 
     {% if custom_buttons %}
-
-        <form method="post" action="/">
-            {% csrf_token %}
-
-            <ul class="list-unstyled components h-auto">
-                {% for btn in custom_buttons %}
-                    <li>
-                        <button name="command" class="btn btn-sm p-3 w-100 mb-1" type="submit" value="{{ btn.command.command }}"
-                                style="background-color: {{ btn.color }}">{{ btn.command.title }}</button>
-                    </li>
-                {% endfor %}
-            </ul>
-        </form>
+        <ul class="list-unstyled components h-auto">
+            {% for btn in custom_buttons %}
+                <li>
+                    <button name="command" class="btn btn-sm p-3 w-100 mb-1" type="submit" value="{{ btn.command.command }}"
+                            style="background-color: {{ btn.color }}">{{ btn.command.title }}</button>
+                </li>
+            {% endfor %}
+        </ul>
     {% endif %}
 
     <ul class="list-unstyled CTAs">

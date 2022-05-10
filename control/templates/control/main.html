@@ -9,6 +9,12 @@
         <title>🦥 Lazy Helper</title>
     </head>
     <body>
+
+    <form action="{% url 'ajax-exec-command' %}" id="command-form" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="exec-command-endpoint" value="">
+    </form>
+
         <div class="float-start m-auto h-100 align-items-stretch">
             {% include 'control/sidebar.html' %}
         </div>
@@ -27,8 +33,6 @@
             <div class="col-lg-4 col-md-1 col-sm-12"></div>
             <div class="col-lg-4 col-md-10 col-sm-12 mt-5">
                 <h1 class="text-center mb-3">Hello{% if user.username %}, {{ user.username }} {% endif %} 🦥</h1>
-                <form method="post" action="/">
-                    {% csrf_token %}
                     <div class="row" style="--bs-gutter-x: 0.25rem">
                         <div class="col-8">
                             <button name="command" class="btn btn-lg btn-danger p-5 w-100 mb-1" type="submit" value="shutdown">Shutdown</button>
@@ -49,25 +53,13 @@
                             <button name="command" class="btn btn-lg btn-warning p-5 w-100 mb-1" type="submit" value="loginctl lock-sessions">Lock</button>
                         </div>
                     </div>
-                </form>
                 <hr>
-                <form action="/" method="post">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="p-3 input-group-text">$</span>
-                        </div>
-                        <input type="text" class="p-3 form-control mb-1" placeholder="Custom Command" name="command">
-                    </div>
-                    <input type="submit" class="btn btn-lg btn-outline-success w-100 ">
-                </form>
+
                 <hr>
-                {% if response %}
-                <div class="form-group">
+                <div id="div-output" class="form-group" style="display: none">
                     <label for="output">Output</label>
-                    <textarea class="form-control bg-secondary text-white" id="output" rows="10" disabled>{{ response }}</textarea>
+                    <textarea class="form-control bg-secondary text-white" id="output" rows="10" disabled></textarea>
                 </div>
-                {% endif %}
                 <div class="row ">
                     {% if user.is_authenticated %}
                     <a class="col-4 text-decoration-none text-center form-text" href="{% url 'logout' %}">Logout</a>

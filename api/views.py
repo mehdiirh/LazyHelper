@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from django.views.decorators.http import require_safe, require_POST
+from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
 from utils.api.tools import save_received_request, api_response, get_request_data
