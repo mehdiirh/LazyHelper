@@ -170,3 +170,33 @@ a.article:hover {
         display: none;
     }
 }
+
+
+/* ---------------------------------------------------
+    ALERTS
+----------------------------------------------------- */
+.alert-error{
+    padding: 1rem 2rem;
+    position: fixed;
+    background: #ff355e;
+    color: white;
+    top: 3rem;
+    right: 50%;
+    transform: translateX(50%);
+    border-radius: 8px;
+    display: none;
+    z-index: 99999999999;
+}
+
+.alert-success {
+    padding: 1rem 2rem;
+    position: fixed;
+    background: #1bb301;
+    color: #000000;
+    top: 3rem;
+    right: 50%;
+    transform: translateX(50%);
+    border-radius: 8px;
+    display: none;
+    z-index: 99999999999;
+}
