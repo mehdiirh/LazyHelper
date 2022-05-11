@@ -34,6 +34,7 @@ echo
 
 echo - Loading fixtures...
 ./manage.py loaddata install/fixtures.json
+./manage.py loaddata install/linux_commands.json
 echo Done
 echo
 

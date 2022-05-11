@@ -16,6 +16,7 @@ class ConfigAdmin(admin.ModelAdmin):
 class CommandAdmin(admin.ModelAdmin):
 
     list_display = ['id', 'title', 'short_code', 'command', 'active']
+    list_display_links = ['id', 'title']
     list_editable = ['active']
     prepopulated_fields = {'short_code': ['title']}
 

@@ -2,8 +2,9 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
-from utils.api.tools import save_received_request, api_response, get_request_data
+from config.models import Command
 
+from utils.api.tools import save_received_request, api_response, get_request_data
 from utils.core import http_status as sc
 from utils.core.tools import execute_command
 from utils.auth.http.decorators import login_required
@@ -25,13 +26,22 @@ def exec_command(request):
             message='no command provided',
         )
 
+    try:
+        command = Command.objects.get(short_code=command)
+    except Command.DoesNotExist:
+        return api_response(
+            request,
+            status_code=sc.HTTP_404_NOT_FOUND,
+            message='command is not valid'
+        )
+
     # == ATTENTION ==
     # if command results in shutting down/sleep/hibernate etc. output won't save
     # == ATTENTION ==
 
     response = api_response(
         request,
-        data={'command': command},
+        data={'command': command.command},
         status=True,
         commit=False,
         return_json=True
@@ -41,7 +51,7 @@ def exec_command(request):
 
     request_object = save_received_request(request, response, status_code=status_code)
 
-    output = execute_command(command)
+    output = execute_command(command.command)
     response['data'] |= {'output': str(output) or None}
 
     request_object.response = response

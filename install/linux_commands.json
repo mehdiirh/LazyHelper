@@ -1,0 +1,68 @@
+[
+{
+    "model": "config.command",
+    "pk": 1,
+    "fields": {
+        "title": "Shutdown",
+        "command": "sudo shutdown",
+        "short_code": "shutdown",
+        "description": "shutdown",
+        "active": true
+    }
+},
+{
+    "model": "config.command",
+    "pk": 2,
+    "fields": {
+        "title": "Cancel Shutdown",
+        "command": "sudo shutdown -c",
+        "short_code": "cancel-shutdown",
+        "description": "cancel upcoming shut down",
+        "active": true
+    }
+},
+{
+    "model": "config.command",
+    "pk": 3,
+    "fields": {
+        "title": "Reboot",
+        "command": "sudo reboot",
+        "short_code": "reboot",
+        "description": "Reboot the system",
+        "active": true
+    }
+},
+{
+    "model": "config.command",
+    "pk": 4,
+    "fields": {
+        "title": "Log out",
+        "command": "sudo kill -9 -1",
+        "short_code": "log-out",
+        "description": "Log out user",
+        "active": true
+    }
+},
+{
+    "model": "config.command",
+    "pk": 5,
+    "fields": {
+        "title": "Sleep",
+        "command": "sudo systemctl suspend",
+        "short_code": "sleep",
+        "description": "Suspend the session",
+        "active": true
+    }
+},
+{
+    "model": "config.command",
+    "pk": 6,
+    "fields": {
+        "title": "Lock",
+        "command": "sudo loginctl lock-sessions",
+        "short_code": "lock",
+        "description": "Lock the session",
+        "active": true
+    }
+}
+]
