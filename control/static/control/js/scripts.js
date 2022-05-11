@@ -33,9 +33,7 @@ window.alertSuccess = function (text, timeout=1000) {
 
 function send_command(code) {
     $("button[name='command']").prop("disabled", true)
-    $("#div-output").slideUp(() => {
-        $("#output").text('')
-    })
+    $("#div-output").css('display', 'none')
 
     let form = $("#command-form")
     let data = form.serializeArray()
