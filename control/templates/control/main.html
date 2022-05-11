@@ -38,24 +38,23 @@
                             <button name="command" class="btn btn-lg btn-danger p-5 w-100 mb-1" type="submit" value="shutdown">Shutdown</button>
                         </div>
                         <div class="col-4">
-                            <button name="command" class="btn btn-lg btn-warning p-5 w-100 mb-1" type="submit" value="shutdown -c">Cancel</button>
+                            <button name="command" class="btn btn-lg btn-warning p-5 w-100 mb-1" type="submit" value="cancel-shutdown">Cancel</button>
                         </div>
                         <div class="col-6">
                             <button name="command" class="btn btn-lg btn-primary p-5 w-100 mb-1" type="submit" value="reboot">Reboot</button>
                         </div>
                         <div class="col-6">
-                            <button name="command" class="btn btn-lg btn-info p-5 w-100 mb-1" type="submit" value="kill -9 -1">Logout</button>
+                            <button name="command" class="btn btn-lg btn-info p-5 w-100 mb-1" type="submit" value="log-out">Logout</button>
                         </div>
                         <div class="col-6">
-                            <button name="command" class="btn btn-lg btn-success p-5 w-100 mb-1" type="submit" value="systemctl suspend">Sleep</button>
+                            <button name="command" class="btn btn-lg btn-success p-5 w-100 mb-1" type="submit" value="sleep">Sleep</button>
                         </div>
                         <div class="col-6">
-                            <button name="command" class="btn btn-lg btn-warning p-5 w-100 mb-1" type="submit" value="loginctl lock-sessions">Lock</button>
+                            <button name="command" class="btn btn-lg btn-warning p-5 w-100 mb-1" type="submit" value="lock">Lock</button>
                         </div>
                     </div>
                 <hr>
 
-                <hr>
                 <div id="div-output" class="form-group" style="display: none">
                     <label for="output">Output</label>
                     <textarea class="form-control bg-secondary text-white" id="output" rows="10" disabled></textarea>

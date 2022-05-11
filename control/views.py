@@ -3,7 +3,7 @@ from django.http.response import JsonResponse
 from django.contrib.auth import logout as logout_user
 from django.views.decorators.http import require_POST
 
-from config.models import Button
+from config.models import Button, Command
 
 from utils.auth.http.decorators import login_required
 
