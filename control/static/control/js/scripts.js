@@ -12,7 +12,7 @@ $('button[name="command"]').on("click", (e) => {
     send_command($(e.target).val());
 })
 
-window.alertError = function (text, timeout=1000) {
+window.alertError = function (text, timeout = 2000) {
     let alert = $(".alert-error");
     alert.html(text)
     alert.fadeIn(500)
@@ -21,7 +21,7 @@ window.alertError = function (text, timeout=1000) {
     }, timeout);
 }
 
-window.alertSuccess = function (text, timeout=1000) {
+window.alertSuccess = function (text, timeout = 2000) {
     let alert = $(".alert-success");
     alert.html(text)
     alert.fadeIn(500)
@@ -53,7 +53,10 @@ function send_command(code) {
                 $("#output").text(response['data']['output']);
             }
         } else {
-            alertError('An error occurred')
+            if (response['meta']['message'])
+                alertError(response['meta']['message'])
+            else
+                alertError(`An error occurred [ ${response['meta']['code']} ]`)
         }
 
         $("button[name='command']").prop("disabled", false)

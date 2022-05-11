@@ -1,19 +1,16 @@
-from django.shortcuts import render, reverse, redirect
-from django.http.response import JsonResponse
+import requests
+
 from django.contrib.auth import logout as logout_user
+from django.http.response import JsonResponse
+from django.shortcuts import render, reverse, redirect
 from django.views.decorators.http import require_POST
 
-from config.models import Button, Command
-
+from config.models import Button
 from utils.auth.http.decorators import login_required
-
-import json
-import requests
 
 
 @login_required(redirect_login=True, next_redirect='control')
 def control(request):
-
     custom_buttons = Button.objects.filter(active=True, command__active=True).all()
     context = {
         'response': '',
@@ -26,7 +23,6 @@ def control(request):
 
 @require_POST
 def ajax_exec(request):
-
     api_key = None
     if request.user.is_staff:
         api_key = request.user.profile.api_key
@@ -42,17 +38,7 @@ def ajax_exec(request):
         data={'command': str(command)}
     )
 
-    try:
-        response = response.json()
-    except json.JSONDecodeError:
-        response = {
-            'data': None,
-            'meta': {
-                'status': 'fail',
-                'code': response.status_code,
-            }}
-
-    return JsonResponse(response, status=200)
+    return JsonResponse(response.json(), status=200)
 
 
 def logout(request):

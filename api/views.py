@@ -12,7 +12,7 @@ from utils.auth.http.decorators import login_required
 
 @require_POST
 @csrf_exempt
-@login_required()
+@login_required(api_endpoint=True)
 def exec_command(request):
 
     data = get_request_data(request)

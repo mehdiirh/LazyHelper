@@ -4,11 +4,12 @@ from django.shortcuts import reverse
 
 from functools import wraps
 
-from utils.api.tools import user_security_check
+from utils.api.tools import user_security_check, api_response
+from utils.core import http_status as sc
 from utils.core.exceptions import AuthenticationError
 
 
-def login_required(redirect_login=False, next_redirect=None):
+def login_required(redirect_login=False, next_redirect=None, api_endpoint=False):
 
     def decorator(func):
         @wraps(func)
@@ -16,6 +17,15 @@ def login_required(redirect_login=False, next_redirect=None):
             try:
                 user_security_check(request)
             except AuthenticationError:
+
+                if api_endpoint:
+                    return api_response(
+                        request,
+                        status_code=sc.HTTP_403_FORBIDDEN,
+                        message='authentication failed',
+                        commit=False
+                    )
+
                 if not redirect_login:
                     raise PermissionDenied
 
