@@ -56,7 +56,7 @@ function send_command(code) {
             if (response['meta']['message'])
                 alertError(response['meta']['message'])
             else
-                alertError(`An error occurred [ ${response['meta']['code']} ]`)
+                alertError(`Failed : ${response['meta']['code']}`)
         }
 
         $("button[name='command']").prop("disabled", false)
