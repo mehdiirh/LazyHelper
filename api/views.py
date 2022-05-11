@@ -14,7 +14,7 @@ from utils.auth.http.decorators import login_required
 @csrf_exempt
 @login_required(api_endpoint=True)
 def exec_command(request):
-    return api_response(request, status_code=404)
+
     data = get_request_data(request)
 
     command = data.get('command')
