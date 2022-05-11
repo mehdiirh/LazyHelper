@@ -8,7 +8,7 @@
         <ul class="list-unstyled components h-auto">
             {% for btn in custom_buttons %}
                 <li>
-                    <button name="command" class="btn btn-sm p-3 w-100 mb-1" type="submit" value="{{ btn.command.command }}"
+                    <button name="command" class="btn btn-sm p-3 w-100 mb-1" type="submit" value="{{ btn.command.short_code }}"
                             style="background-color: {{ btn.color }}">{{ btn.command.title }}</button>
                 </li>
             {% endfor %}
