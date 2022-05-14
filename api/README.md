@@ -4,7 +4,8 @@ LazyHelper provides REST API.
 
 if you have smart home or a central application and need to control your PC from there, you can use these endpoints
 
-#### If authentication is required, you have to pass your `api_key` in headers in all of your requests.
+##️ ❗Authentication:
+If authentication is required, you have to pass your `api_key` in headers in all of your requests.
 
 > #### ❓ WHERE IS API KEY?
 > 
@@ -17,7 +18,13 @@ if you have smart home or a central application and need to control your PC from
 
 Example of headers:
 ```json
-{"authorization": "123abc456def789ijk0lmno"}
+{"Authorization": "123abc456def789ijk0lmno"}
 ```
 
+## Endpoints
+Here is a list of all API endpoints.
 
+Name                 | Docs
+:---                 | :---
+Execute commands     | [Docs](endpoints/execute.md)
+Get list of commands | [Docs](endpoints/commands.md)
