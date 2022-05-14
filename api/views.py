@@ -36,6 +36,13 @@ def exec_command(request):
             message='command is not valid'
         )
 
+    if not command.active:
+        return api_response(
+            request,
+            status_code=sc.HTTP_404_NOT_FOUND,
+            message='command is not active'
+        )
+
     # == ATTENTION ==
     # if command results in shutting down/sleep/hibernate etc. output won't save
     # == ATTENTION ==
