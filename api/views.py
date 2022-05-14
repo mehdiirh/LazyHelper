@@ -1,10 +1,11 @@
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
+from django.core.exceptions import ValidationError
 
 from config.models import Command
 
-from utils.api.tools import save_received_request, api_response, get_request_data
+from utils.api.tools import save_received_request, api_response, get_request_data, get_search_query
 from utils.core import http_status as sc
 from utils.core.tools import execute_command
 from utils.auth.http.decorators import login_required
@@ -59,3 +60,42 @@ def exec_command(request):
 
     return JsonResponse(response, status=status_code)
 
+
+@require_POST
+@csrf_exempt
+@login_required(api_endpoint=True)
+def list_commands(request):
+
+    search_fields = ['active', 'buttons__active']
+    search_query = get_search_query(search_fields, get_request_data(request))
+
+    commands = Command.objects.order_by('active', 'buttons__active').all()
+
+    try:
+        commands = commands.filter(**search_query)
+    except ValidationError:
+        pass  # ignore searches
+
+    data = {}
+
+    for cmd in commands:
+        data[cmd.pk] = {
+            'title': cmd.title,
+            'command': cmd.command,
+            'short_code': cmd.short_code,
+            'description': cmd.description,
+            'active': cmd.active,
+            'has_buttons': False,
+            'buttons': {},
+        }
+
+        if cmd.buttons.exists():
+            data[cmd.pk]['has_buttons'] = True
+
+            for btn in cmd.buttons.all():
+                data[cmd.pk]['buttons'][btn.pk] = {
+                    'color': btn.color,
+                    'active': btn.active,
+                }
+
+    return api_response(request, data, commit=True)
