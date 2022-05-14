@@ -89,6 +89,22 @@ def get_request_data(request: WSGIRequest):
     return data
 
 
+def get_search_query(search_fields: list, query_dict: dict) -> dict:
+    """
+    Create a query-dict based on search fields
+    Args:
+        search_fields: a list of possible keys to search
+        query_dict: query dict for searching
+
+    Returns:
+        dict: a query-dict to search
+    """
+
+    return dict(filter(
+        lambda x: x[0] in search_fields, query_dict.items()
+    ))
+
+
 def api_response(request, data=None, status=True, status_code=sc.HTTP_200_OK,
                  message='', return_json=False, commit=False,
                  private_data=None, **extra_data) -> Union[JsonResponse, dict]:

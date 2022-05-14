@@ -13,7 +13,7 @@
 
 ## - API
 
-LazyHelper API is described [Here](docs/api.md)
+LazyHelper API is described [Here](api/README.md)
 
 ## - Installation
 
