@@ -44,7 +44,17 @@ echo
 
 echo - Loading fixtures...
 ./manage.py loaddata install/fixtures.json
-./manage.py loaddata install/linux_commands.json
+
+while true; do
+  read -rp "Load commands fixtures? ( pre-defined commands ) [y/n] : " fixtures;
+  if [ "$fixtures" == "y" ]; then
+    ./manage.py loaddata install/linux_commands.json
+    break;
+  elif [ "$fixtures" == "n" ]; then
+    break;
+  fi;
+done
+
 echo Done
 echo
 
