@@ -15,6 +15,11 @@ pip install -r requirements.txt
 echo Done
 echo
 
+echo - Creating migrations and loading static files...
+./manage.py makemigrations
+echo Done
+echo
+
 echo - Running tests...
 if ./manage.py test --failfast; then
   echo Done;
@@ -35,8 +40,7 @@ echo - Exiting install directory
 cd ..
 echo
 
-echo - Creating migrations and loading static files...
-./manage.py makemigrations
+echo - Migrate database and loading static files...
 ./manage.py migrate
 ./manage.py collectstatic --noinput
 echo Done
