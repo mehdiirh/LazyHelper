@@ -26,4 +26,3 @@ def generate_unique_id(length: int = 32, model=None, field: str = 'api_key') -> 
                 continue
 
         return token
-

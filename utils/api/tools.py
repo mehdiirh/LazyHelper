@@ -243,7 +243,7 @@ def user_security_check(request):
     # find user object based on api_key
     try:
         User.objects.get(profile__api_key__exact=api_key)
-    except User.DoesNotExist:  # if User does not exists
+    except User.DoesNotExist:  # if User does not exist
         raise AuthenticationError()
 
     return True

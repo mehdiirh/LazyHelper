@@ -20,4 +20,3 @@ class Error(Exception):
 class AuthenticationError(Error):
     code = 403
     message = 'Authentication failed'
-

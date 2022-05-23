@@ -25,11 +25,11 @@ def optimize_json(_dict) -> [dict, str]:
 
 def render_json(_dict, html=False) -> str:
     """
-    render a human readable json
+    render a human-readable json
 
     Args:
         _dict: json or dictionary instance
-        html: if is set to `True`, function will return an html-rendered json
+        html: if is set to `True`, function will return a html-rendered json
 
     Returns:
         str: rendered json
@@ -78,4 +78,3 @@ def render_json(_dict, html=False) -> str:
     if html:
         return mark_safe(f'<pre style="background-color: #9a9a9a5c; padding: 12px;">{text}</pre>')
     return text
-

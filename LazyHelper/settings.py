@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '192.168.',  # change to your own local IP address
-    '.local',  # or set an static hostname at " /etc/hosts "
+    '.local',  # or set a static hostname at " /etc/hosts "
     'localhost',
     '127.0.0.1'
 ]
@@ -66,8 +66,7 @@ ROOT_URLCONF = 'LazyHelper.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
