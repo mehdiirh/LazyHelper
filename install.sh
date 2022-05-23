@@ -15,6 +15,16 @@ pip install -r requirements.txt
 echo Done
 echo
 
+echo - Running tests...
+if ./manage.py test --failfast; then
+  echo Done;
+  echo;
+else
+  echo;
+  echo -e "\e[31mSome tests failed, please fix the problem and retry\e[0m";
+  exit 0;
+fi
+
 echo - Generating SECRET_KEY...
 cd install || exit
 python gen_sec_key.py

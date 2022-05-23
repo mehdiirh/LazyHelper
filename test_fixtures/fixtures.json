@@ -1,0 +1,30 @@
+[
+  {
+    "model": "config.command",
+    "pk": 1,
+    "fields": {
+        "title": "test command",
+        "command": "",
+        "short_code": "test-command",
+        "description": "",
+        "active": true
+    }
+  },
+  {
+    "model": "config.button",
+    "pk": 1,
+    "fields": {
+        "command": 1,
+        "color": "#C4E538",
+        "active": true
+    }
+  },
+  {
+    "model": "config.config",
+    "pk": 1,
+    "fields": {
+      "key": "login-required",
+      "active": true
+    }
+  }
+]
