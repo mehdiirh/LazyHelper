@@ -240,7 +240,6 @@ class TestApiEndpoints(TestCase):
         )
 
         data = response.json()
-        print(data)
 
         self.assertEqual(response.status_code, 400)
         self.assertIsNone(data['data'])
