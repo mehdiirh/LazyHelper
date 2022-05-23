@@ -56,7 +56,6 @@ class TestApiTools(TestCase):
 
     def test_save_received_api_requests(self):
 
-        self.client.login(username='test_superuser', password='passwd')
         request = RequestFactory().post(
             reverse('list-of-commands'),
             **self.headers,
@@ -217,6 +216,36 @@ class TestApiEndpoints(TestCase):
         self.assertEqual(data['data']['output'], None)
         self.assertEqual(data['meta']['status'], 'ok')
         self.assertEqual(data['data']['command'], '')
+
+    def test_command_execution_with_api_when_command_is_not_defined(self):
+
+        response = self.client.post(
+            reverse('exec-command'),
+            data={'command': 'x-some-dummy-command-x'},
+            **self.headers,
+        )
+
+        data = response.json()
+
+        self.assertEqual(response.status_code, 404)
+        self.assertIsNone(data['data'])
+        self.assertEqual(data['meta']['status'], 'fail')
+        self.assertEqual(data['meta']['message'], 'command is not valid')
+
+    def test_command_execution_with_api_when_command_is_not_provided(self):
+
+        response = self.client.post(
+            reverse('exec-command'),
+            **self.headers,
+        )
+
+        data = response.json()
+        print(data)
+
+        self.assertEqual(response.status_code, 400)
+        self.assertIsNone(data['data'])
+        self.assertEqual(data['meta']['status'], 'fail')
+        self.assertEqual(data['meta']['message'], 'no command provided')
 
     def test_get_list_of_commands(self):
 
