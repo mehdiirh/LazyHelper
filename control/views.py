@@ -5,6 +5,7 @@ from django.http.response import JsonResponse
 from django.shortcuts import render, reverse, redirect
 from django.views.decorators.http import require_POST
 
+from config.models import Button
 from utils.core.tools import linux_package_installed
 from utils.auth.http.decorators import login_required
 
@@ -12,7 +13,10 @@ from utils.auth.http.decorators import login_required
 @login_required(redirect_login=True, next_redirect='control')
 def control(request):
 
+    custom_buttons = Button.objects.filter(active=True, command__active=True).all()
+
     context = {
+        'custom_buttons': custom_buttons,
         'xclip': linux_package_installed('xclip'),
         'user': request.user,
     }
