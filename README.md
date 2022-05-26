@@ -31,7 +31,10 @@ Run:
 sudo bash install.sh && source venv/bin/activate
 ```
 
-Yay ! 
+Yay !
+
+#### - To use "copy to clipboard" feature, you need to install [xclip](https://github.com/astrand/xclip)
+
 
 ### Now you can run your LazyHelper:
 ```shell
