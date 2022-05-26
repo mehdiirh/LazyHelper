@@ -7,7 +7,7 @@ from config.models import Command
 
 from utils.api.tools import save_received_request, api_response, get_request_data, get_search_query
 from utils.core import http_status as sc
-from utils.core.tools import execute_command
+from utils.core.tools import execute_command, copy_content_to_clipboard, linux_package_installed
 from utils.auth.http.decorators import login_required
 
 
@@ -106,3 +106,38 @@ def list_commands(request):
                 }
 
     return api_response(request, data, commit=True)
+
+
+@require_POST
+@csrf_exempt
+@login_required(api_endpoint=True)
+def copy_to_clipboard(request):
+
+    if not linux_package_installed('xclip'):
+        return api_response(
+            request,
+            status_code=sc.HTTP_400_BAD_REQUEST,
+            message='xclip package is not installed'
+        )
+
+    data = get_request_data(request)
+    content = data.get('content')
+
+    if not content:
+        return api_response(
+            request,
+            status_code=sc.HTTP_400_BAD_REQUEST,
+            message='no content provided',
+        )
+
+    output = copy_content_to_clipboard(content)
+
+    status_code = sc.HTTP_200_OK if output else sc.HTTP_400_BAD_REQUEST
+
+    return api_response(
+        request,
+        data={'content': content},
+        status=output,
+        status_code=status_code,
+    )
+

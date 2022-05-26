@@ -5,6 +5,8 @@ from django.shortcuts import reverse
 from utils import generators
 from utils.generators import stylers
 
+from utils.core.tools import copy_content_to_clipboard, linux_package_installed
+
 import string
 
 
@@ -68,6 +70,17 @@ class TestGeneratorAndStylerTools(TestCase):
 
         self.assertEqual(stylers.render_json('Hello'), 'Hello')
         self.assertEqual(stylers.render_json(1), 1)
+
+
+class TestTools(TestCase):
+
+    def test_copy_to_clipboard_tool(self):
+        if not linux_package_installed('xclip'):
+            return  # stop test if xclip is not installed
+
+        for content in ['hello world', '*', 123, None, '\n', '']:
+            status = copy_content_to_clipboard(content)
+            self.assertEqual(status, True)
 
 
 class TestMainPage(TestCase):
