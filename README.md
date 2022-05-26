@@ -2,7 +2,7 @@
 
 ### A simple interface to help lazy people like me to shut down/reboot/sleep/lock/etc. their computer remotely.
 
-![img.png](images/img.png)
+![img.png](images/img.jpg)
 
 ## - USAGE
 
