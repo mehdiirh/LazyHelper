@@ -5,16 +5,15 @@ from django.http.response import JsonResponse
 from django.shortcuts import render, reverse, redirect
 from django.views.decorators.http import require_POST
 
-from config.models import Button
+from utils.core.tools import linux_package_installed
 from utils.auth.http.decorators import login_required
 
 
 @login_required(redirect_login=True, next_redirect='control')
 def control(request):
-    custom_buttons = Button.objects.filter(active=True, command__active=True).all()
+
     context = {
-        'response': '',
-        'custom_buttons': custom_buttons,
+        'xclip': linux_package_installed('xclip'),
         'user': request.user,
     }
 
@@ -36,6 +35,25 @@ def ajax_exec(request):
         execute_command_endpoint,
         headers={'authorization': api_key},  # send user api_key ( if authenticated )
         data={'command': str(command)}
+    )
+
+    return JsonResponse(response.json(), status=200)
+
+
+def ajax_copy_to_clipboard(request):
+    api_key = None
+    if request.user.is_staff:
+        api_key = request.user.profile.api_key
+
+    content = request.POST.get('content')
+
+    # build absolute uri for "copy to clipboard" API endpoint and
+    # send content to it
+    copy_to_clipboard_endpoint = request.build_absolute_uri(reverse('copy-to-clipboard'))
+    response = requests.post(
+        copy_to_clipboard_endpoint,
+        headers={'authorization': api_key},  # send user api_key ( if authenticated )
+        data={'content': str(content)}
     )
 
     return JsonResponse(response.json(), status=200)

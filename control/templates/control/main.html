@@ -52,6 +52,22 @@
                         <div class="col-6">
                             <button name="command" class="btn btn-lg btn-warning p-5 w-100 mb-1" type="submit" value="lock">Lock</button>
                         </div>
+
+                        <div class="col-12">
+                            <form id="copy-form" action="{% url 'ajax-copy-to-clipboard' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <input type="text" name="content"
+                                           {% if not xclip %}value="install xclip to enable clipboard" class="form-control text-muted" disabled{% endif %}
+                                           class="form-control"
+                                           placeholder="Copy to clipboard">
+                                    <div class="input-group-append">
+                                        <button id="copy-button" class="input-group-text">📋 Copy</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
                 <hr>
 

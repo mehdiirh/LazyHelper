@@ -12,6 +12,11 @@ $('button[name="command"]').on("click", (e) => {
     send_command($(e.target).val());
 })
 
+$('#copy-form').on('submit', (e) => {
+    e.preventDefault();
+    copyToClipboard();
+})
+
 window.alertError = function (text, timeout = 2000) {
     let alert = $(".alert-error");
     alert.html(text)
@@ -30,6 +35,28 @@ window.alertSuccess = function (text, timeout = 2000) {
     }, timeout);
 }
 
+
+function copyToClipboard() {
+    let form = $("#copy-form");
+    let data = form.serializeArray();
+    console.log(data)
+
+    $.ajax({
+        url: form.attr('action'),
+        method: form.attr('method'),
+        data: data,
+        async: true
+    }).then((response) => {
+        if (response['meta']['status'] === 'ok') {
+            alertSuccess("Copied !")
+        } else {
+            if (response['meta']['message'])
+                alertError(response['meta']['message'])
+            else
+                alertError(`Failed : ${response['meta']['code']}`)
+        }
+    })
+}
 
 function send_command(code) {
     $("button[name='command']").prop("disabled", true)
