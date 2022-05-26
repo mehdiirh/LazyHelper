@@ -1,6 +1,6 @@
 ## Execute commands
 
-### 📦 To use this feature, you need to install [xclip](https://github.com/astrand/xclip)
+> ### 📦 To use this feature, you need to install [xclip](https://github.com/astrand/xclip)
 
 
 ```shell

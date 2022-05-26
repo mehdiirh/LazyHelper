@@ -7,10 +7,10 @@ POST /api/commands/
 
 You can filter the response by passing queries in data, using these search fields:
 
-Key             | Type   | Description 
-:---            | :---:  | :---
-active          | bool   | only returns active commands 
-buttons__active | bool   | only returns commands which have active buttons
+| Key             | Type | Description                                     |
+|:----------------|:----:|:------------------------------------------------|
+| active          | bool | only returns active commands                    |
+| buttons__active | bool | only returns commands which have active buttons |
 
 For example: 
 If you want to get only custom-commands which have a button you can do:

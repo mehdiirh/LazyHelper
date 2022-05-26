@@ -24,7 +24,8 @@ Example of headers:
 ## - Endpoints
 Here is a list of all API endpoints.
 
-Name                 | Docs
-:---                 | :---
-Execute commands     | [Docs](endpoints/execute.md)
-Get list of commands | [Docs](endpoints/commands.md)
+| Name                 | Docs                              |
+|:---------------------|:----------------------------------|
+| Execute commands     | [Docs](endpoints/execute.md)      |
+| Copy to clipboard    | [Docs](endpoints/cp-clipboard.md) |
+| Get list of commands | [Docs](endpoints/commands.md)     |
