@@ -1,11 +1,13 @@
 from django.urls import path
-from .views import control, ajax_exec, ajax_copy_to_clipboard, logout
+from . import views
 
 urlpatterns = [
-    path('', control, name='control'),
+    path('', views.control, name='control'),
 
-    path('ajax/execute/', ajax_exec, name='ajax-exec-command'),
-    path('ajax/copy/', ajax_copy_to_clipboard, name='ajax-copy-to-clipboard'),
+    path('ajax/initial/', views.initial_data, name='ajax-initial-data'),
+    path('ajax/execute/', views.ajax_exec, name='ajax-exec-command'),
+    path('ajax/copy/', views.ajax_copy_to_clipboard, name='ajax-copy-to-clipboard'),
+    path('ajax/login/', views.login, name='ajax-login'),
 
-    path('logout/', logout, name='logout'),
+    path('logout/', views.logout, name='logout'),
 ]
