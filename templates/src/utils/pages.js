@@ -177,7 +177,7 @@ export function Profile(props) {
                     </FlexRow>
 
                     <div className={"flex-row justify-content-end me-3"}>
-                        <IconButton className={'btn btn-success w-50'} loading={loadingOnLogin} icon={faArrowRight} clickHandler={loginClickHandler} >
+                        <IconButton className={'btn btn-lazy w-50'} loading={loadingOnLogin} icon={faArrowRight} clickHandler={loginClickHandler} >
                             <span> Login</span>
                         </IconButton>
                     </div>

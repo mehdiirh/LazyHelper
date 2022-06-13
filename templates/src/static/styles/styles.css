@@ -67,7 +67,6 @@
 }
 
 
-
 body {
     background: #E2E2E2;
 }
@@ -166,6 +165,26 @@ body {
     flex-direction: column;
     justify-content: space-between;
     gap: 15px;
+}
+
+.btn-lazy {
+    background: #FAEBE5;
+    box-shadow: 0 1px 2px rgba(56, 87, 118, 0.2);
+    border-radius: 4px;
+    border: 1px solid #E2E2E2;
+}
+
+.btn-lazy:disabled {
+    background: #E2E2E2;
+    border: 1px solid #E2E2E2;
+}
+
+.btn-lazy:hover:enabled {
+    background: #fae2d4;
+}
+
+.btn-lazy:active:enabled {
+    background: #dac4b8;
 }
 
 .home-button {
