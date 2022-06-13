@@ -8,7 +8,6 @@ import {
     IconInput, Button, SlideDown,
 } from "./components";
 import {
-    faArrowCircleDown,
     faArrowRight,
     faArrowRightToFile, faCaretDown,
     faCog,
@@ -20,7 +19,6 @@ import {
     faUser, faUserCheck,
     faUserLock,
 } from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 export function MainPage(props) {
