@@ -173,7 +173,7 @@ export function Profile(props) {
                         <IconInput icon={faUser} reference={usernameInput} placeholder={"username"} />
                     </FlexRow>
                     <FlexRow>
-                        <IconInput type={'password'} icon={faStarOfLife} reference={passwordInput} placeholder={"username"}/>
+                        <IconInput type={'password'} icon={faStarOfLife} reference={passwordInput} placeholder={"password"}/>
                     </FlexRow>
 
                     <div className={"flex-row justify-content-end me-3"}>
