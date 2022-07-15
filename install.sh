@@ -26,7 +26,7 @@ pip install -r requirements.txt || exit 1;
 echo Done;
 echo;
 
-echo - Creating migrations and loading static files...
+echo - Creating migrations...
 ./manage.py makemigrations || exit 1;
 echo Done;
 echo;
