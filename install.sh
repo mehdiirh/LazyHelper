@@ -14,18 +14,6 @@ if ! which npm > /dev/null 2>&1; then
   exit 1;
 fi;
 
-echo - Building templates...;
-cd templates || exit 1;
-npm install || exit 1;
-npm run build || exit 1;
-echo Done;
-echo;
-
-echo - Exiting templates directory...;
-cd ..;
-echo Done;
-echo;
-
 echo - Creating virtual environment...;
 python3 -m venv venv || exit 1;
 source venv/bin/activate;

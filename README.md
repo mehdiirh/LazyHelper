@@ -29,13 +29,19 @@ LazyHelper🦥 likes lazy people, so because you're too lazy to install step by 
 
 You will be asked to create a superuser, please do it to use the authentication system. 
 
-Run:
+Execute:
 
 ```shell
 sudo bash install.sh && source venv/bin/activate
 ```
-
-Yay !
+After that:
+```shell
+cd templates/
+npm install
+npm run build
+cd ..
+```
+Yay ! 
 
 > #### To use "copy to clipboard" feature, you need to install [xclip](https://github.com/astrand/xclip)
 
